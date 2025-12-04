@@ -99,8 +99,9 @@ class UsersApi {
 
     final int minAge = settings[USER_MIN_AGE];
     final int maxAge = settings[USER_MAX_AGE];
+    final List<dynamic>? kinkFilters = settings[USER_FILTER_KINKS];
 
-    // Filter Profile Ages
+    // Filter Profile Ages and Kinks
     return allUsers.where((DocumentSnapshot<Map<String, dynamic>> user) {
       // Get User Birthday
       final DateTime userBirthday = DateTime(
@@ -108,8 +109,27 @@ class UsersApi {
 
       /// Get user profile age to filter
       final int profileAge = UserModel().calculateUserAge(userBirthday);
-      // Return result
-      return profileAge >= minAge && profileAge <= maxAge;
+
+      // Age filter
+      if (profileAge < minAge || profileAge > maxAge) {
+        return false;
+      }
+
+      // Kink filter - if user has kink filters set, only show profiles with matching kinks
+      if (kinkFilters != null && kinkFilters.isNotEmpty) {
+        final List<dynamic>? userKinks = user[USER_KINKS];
+        if (userKinks == null || userKinks.isEmpty) {
+          return false; // Don't show users with no kinks if filtering
+        }
+
+        // Check if user has at least one matching kink
+        final hasMatchingKink = kinkFilters.any((filter) => userKinks.contains(filter));
+        if (!hasMatchingKink) {
+          return false;
+        }
+      }
+
+      return true;
     }).toList();
   }
 }

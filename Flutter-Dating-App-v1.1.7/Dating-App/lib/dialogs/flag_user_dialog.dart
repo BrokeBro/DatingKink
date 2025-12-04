@@ -40,6 +40,14 @@ class FlagUserDialogState extends State<FlagUserDialog> {
       _i18n.translate("violent_content"),
       _i18n.translate("inappropriate_content"),
       _i18n.translate("spam_or_misleading"),
+      // Kink-specific reporting options
+      "Non-consensual behavior",
+      "Ignoring boundaries/safewords",
+      "Fake verification/catfishing",
+      "Misrepresenting kinks/interests",
+      "Harassment or stalking",
+      "Underage or age misrepresentation",
+      "Pressuring for unsafe practices",
       _i18n.translate("other"),
     ];
 

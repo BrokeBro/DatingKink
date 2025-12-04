@@ -54,6 +54,46 @@ class _DashboardState extends State<Dashboard> {
     return users.where((user) => user.data()![field] == status).toList().length;
   }
 
+  /// Count verification requests
+  int _countPendingVerifications(
+      List<DocumentSnapshot<Map<String, dynamic>>> users) {
+    return users
+        .where((user) =>
+            user.data()![USER_VERIFICATION_STATUS] == 'pending')
+        .toList()
+        .length;
+  }
+
+  /// Count age verified users
+  int _countAgeVerified(List<DocumentSnapshot<Map<String, dynamic>>> users) {
+    return users
+        .where((user) => user.data()![USER_AGE_VERIFIED] == true)
+        .toList()
+        .length;
+  }
+
+  /// Get most popular kinks
+  Map<String, int> _getPopularKinks(
+      List<DocumentSnapshot<Map<String, dynamic>>> users) {
+    final Map<String, int> kinkCounts = {};
+
+    for (var user in users) {
+      final List<dynamic>? userKinks = user.data()![USER_KINKS];
+      if (userKinks != null) {
+        for (var kink in userKinks) {
+          kinkCounts[kink.toString()] =
+              (kinkCounts[kink.toString()] ?? 0) + 1;
+        }
+      }
+    }
+
+    // Sort by count and return top 10
+    final sortedEntries = kinkCounts.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+
+    return Map.fromEntries(sortedEntries.take(10));
+  }
+
   @override
   void initState() {
     super.initState();
@@ -90,6 +130,9 @@ class _DashboardState extends State<Dashboard> {
                 final int totalVerifiedUsers = _countUsers(users, 'verified');
                 final int totalFlaggedUsers = _countUsers(users, 'flagged');
                 final int totalBlockedUsers = _countUsers(users, 'blocked');
+                final int pendingVerifications = _countPendingVerifications(users);
+                final int ageVerifiedUsers = _countAgeVerified(users);
+                final Map<String, int> popularKinks = _getPopularKinks(users);
 
                 return SingleChildScrollView(
                   child: Column(
@@ -151,6 +194,22 @@ class _DashboardState extends State<Dashboard> {
                               total: totalBlockedUsers,
                               description: "Total Blocked Users",
                             ),
+
+                            // Pending Verifications
+                            StatisticCard(
+                              iconBgColor: Colors.orange,
+                              icon: Icons.verified_user_outlined,
+                              total: pendingVerifications,
+                              description: "Pending Verifications",
+                            ),
+
+                            // Age Verified Users
+                            StatisticCard(
+                              iconBgColor: Colors.teal,
+                              icon: Icons.verified,
+                              total: ageVerifiedUsers,
+                              description: "Age Verified (18+)",
+                            ),
                           ],
                         ),
                       ),
@@ -162,6 +221,70 @@ class _DashboardState extends State<Dashboard> {
                         totalVerifiedUsers: totalVerifiedUsers,
                         totalFlaggedUsers: totalFlaggedUsers,
                         totalBlockedUsers: totalBlockedUsers,
+                      ),
+
+                      // Popular Kinks Section
+                      Container(
+                        width: double.maxFinite,
+                        margin: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Top 10 Most Popular Kinks",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Divider(),
+                            const SizedBox(height: 10),
+                            ...popularKinks.entries.map((entry) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        entry.key,
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12, vertical: 6),
+                                      decoration: BoxDecoration(
+                                        color: Colors.purple.withOpacity(0.2),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Text(
+                                        '${entry.value} users',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.purple,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                          ],
+                        ),
                       ),
                     ],
                   ),

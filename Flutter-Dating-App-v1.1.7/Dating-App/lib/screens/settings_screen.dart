@@ -5,6 +5,7 @@ import 'package:dating_app/helpers/app_localizations.dart';
 import 'package:dating_app/models/app_model.dart';
 import 'package:dating_app/models/user_model.dart';
 import 'package:dating_app/plugins/locationpicker/place_picker.dart';
+import 'package:dating_app/screens/kink_selection_screen.dart';
 import 'package:dating_app/screens/passport_screen.dart';
 import 'package:dating_app/widgets/show_scaffold_msg.dart';
 import 'package:dating_app/widgets/svg_icon.dart';
@@ -359,6 +360,27 @@ class SettingsScreenState extends State<SettingsScreen> {
 
                 const SizedBox(height: 15),
 
+                /// Kink Filter Option
+                Card(
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.filter_list,
+                      color: Theme.of(context).primaryColor,
+                      size: 30,
+                    ),
+                    title: const Text('Kink Filters',
+                        style: TextStyle(fontSize: 18)),
+                    subtitle: Text(
+                      _getKinkFilterText(),
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: () => _selectKinkFilters(context),
+                  ),
+                ),
+
+                const SizedBox(height: 15),
+
                 /// Hide user profile setting
                 Card(
                   child: ListTile(
@@ -408,5 +430,54 @@ class SettingsScreenState extends State<SettingsScreen> {
             );
           }),
         ));
+  }
+
+  /// Get kink filter display text
+  String _getKinkFilterText() {
+    final Map<String, dynamic>? settings = UserModel().user.userSettings;
+    if (settings == null) return 'No filters applied';
+
+    final List<dynamic>? filterKinks = settings[USER_FILTER_KINKS];
+    if (filterKinks == null || filterKinks.isEmpty) {
+      return 'Show all profiles (no filters)';
+    }
+
+    return 'Filtering by ${filterKinks.length} kink${filterKinks.length > 1 ? 's' : ''}';
+  }
+
+  /// Navigate to kink filter selection
+  Future<void> _selectKinkFilters(BuildContext context) async {
+    final Map<String, dynamic>? settings = UserModel().user.userSettings;
+    final List<String> currentFilters =
+        (settings?[USER_FILTER_KINKS] as List<dynamic>?)?.cast<String>() ?? [];
+
+    final result = await Navigator.of(context).push<List<String>>(
+      MaterialPageRoute(
+        builder: (context) => KinkSelectionScreen(
+          initialSelectedKinks: currentFilters,
+        ),
+      ),
+    );
+
+    if (result != null) {
+      // Update kink filters
+      await UserModel().updateUserData(
+        userId: UserModel().user.userId,
+        data: {
+          '$USER_SETTINGS.$USER_FILTER_KINKS': result,
+        },
+      );
+
+      // Refresh UI
+      if (mounted) {
+        setState(() {});
+        showScaffoldMessage(
+          context: context,
+          message: result.isEmpty
+              ? 'Kink filters cleared'
+              : 'Kink filters updated (${result.length} selected)',
+        );
+      }
+    }
   }
 }
