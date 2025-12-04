@@ -97,11 +97,16 @@ const String USER_DEVICE_TOKEN = "user_device_token";
 const String USER_TOTAL_LIKES = "user_total_likes";
 const String USER_TOTAL_VISITS = "user_total_visits";
 const String USER_TOTAL_DISLIKED = "user_total_disliked";
+const String USER_KINKS = "user_kinks"; // List of selected kinks
+const String USER_VERIFICATION_PHOTO = "user_verification_photo"; // Photo for verification
+const String USER_VERIFICATION_STATUS = "user_verification_status"; // pending, verified, rejected
+const String USER_AGE_VERIFIED = "user_age_verified"; // true if user confirmed 18+
 // User Setting map - fields
 const String USER_MIN_AGE = "user_min_age";
 const String USER_MAX_AGE = "user_max_age";
 const String USER_MAX_DISTANCE = "user_max_distance";
 const String USER_SHOW_ME = "user_show_me";
+const String USER_FILTER_KINKS = "user_filter_kinks"; // List of kinks to filter by
 
 /// DATABASE FIELDS FOR FlaggedUsers COLLECTION  ///
 ///
@@ -151,3 +156,217 @@ const String BLOCKED_BY_USER_ID = 'blocked_by_user_id';
 /// DATABASE SHARED FIELDS FOR COLLECTION
 ///
 const String TIMESTAMP = "timestamp";
+
+/// KINK CATEGORIES - Comprehensive List ///
+///
+const List<String> KINK_CATEGORIES = [
+  // BDSM & Power Exchange
+  'BDSM',
+  'Dominant',
+  'Submissive',
+  'Switch',
+  'Master/Slave',
+  'Daddy/Mommy Dom',
+  'Little',
+  'Pet Play',
+  'Puppy Play',
+  'Kitten Play',
+  'Pony Play',
+  'Primal',
+  'Owner/Property',
+  'Service Submissive',
+  'Brat',
+  'Sadist',
+  'Masochist',
+
+  // Bondage & Restraint
+  'Bondage',
+  'Rope Bondage',
+  'Shibari',
+  'Handcuffs',
+  'Chains',
+  'Restraints',
+  'Mummification',
+  'Predicament Bondage',
+  'Sensory Deprivation',
+
+  // Impact Play
+  'Spanking',
+  'Flogging',
+  'Whipping',
+  'Paddling',
+  'Caning',
+  'Impact Play',
+
+  // Roleplay
+  'Roleplay',
+  'Age Play',
+  'Teacher/Student',
+  'Boss/Secretary',
+  'Doctor/Patient',
+  'Cop/Criminal',
+  'Stranger Play',
+  'Fantasy Roleplay',
+  'Cosplay',
+
+  // Fetishes
+  'Leather',
+  'Latex',
+  'PVC',
+  'Lingerie',
+  'Stockings',
+  'High Heels',
+  'Boots',
+  'Foot Fetish',
+  'Shoe Fetish',
+  'Pantyhose',
+  'Body Worship',
+  'Muscle Worship',
+  'Ass Worship',
+
+  // Sensory Play
+  'Sensory Play',
+  'Blindfolds',
+  'Wax Play',
+  'Ice Play',
+  'Temperature Play',
+  'Electrostimulation',
+  'Tickling',
+  'Feathers',
+
+  // Edge Play & Intense
+  'Edge Play',
+  'Breath Play',
+  'Knife Play',
+  'Blood Play',
+  'Fear Play',
+  'Fire Play',
+
+  // Exhibitionism & Voyeurism
+  'Exhibitionism',
+  'Voyeurism',
+  'Public Play',
+  'Outdoor Sex',
+  'Being Watched',
+  'Watching',
+  'Dogging',
+
+  // Group & Multiple Partners
+  'Threesome',
+  'Group Sex',
+  'Orgies',
+  'Swinging',
+  'Hotwife',
+  'Cuckold',
+  'Polyamory',
+  'Open Relationship',
+
+  // Humiliation & Degradation
+  'Humiliation',
+  'Degradation',
+  'Verbal Humiliation',
+  'Public Humiliation',
+  'Objectification',
+  'Human Furniture',
+
+  // Body Modifications
+  'Piercings',
+  'Tattoos',
+  'Body Art',
+  'Scarification',
+
+  // Specific Acts
+  'Anal Play',
+  'Pegging',
+  'Strapon',
+  'Fisting',
+  'Double Penetration',
+  'Oral',
+  'Deepthroat',
+  'Face Sitting',
+  'Rimming',
+
+  // Clothing & Dress Up
+  'Cross Dressing',
+  'Feminization',
+  'Sissification',
+  'Gender Play',
+  'Uniform Fetish',
+
+  // Control & Denial
+  'Orgasm Control',
+  'Orgasm Denial',
+  'Edging',
+  'Tease and Denial',
+  'Chastity',
+  'Ruined Orgasm',
+  'Forced Orgasm',
+
+  // Fluids
+  'Squirting',
+  'Creampie',
+  'Cum Play',
+
+  // Discipline & Training
+  'Discipline',
+  'Training',
+  'Punishment',
+  'Rules & Protocols',
+
+  // Mental & Psychological
+  'Mind Games',
+  'Psychological Play',
+  'Hypnosis',
+  'Consensual Non-Consent',
+  'Primal Play',
+
+  // Worship & Devotion
+  'Worship',
+  'Devotion',
+  'TPE (Total Power Exchange)',
+  '24/7 Dynamic',
+
+  // Misc
+  'Toys',
+  'Sex Machines',
+  'Glory Hole',
+  'Gangbang',
+  'Rough Sex',
+  'Gentle/Sensual',
+  'Tantric Sex',
+  'Massage',
+  'Erotic Photography',
+  'Erotic Art',
+  'Phone Sex',
+  'Sexting',
+  'Virtual Sex',
+  'Voice Kink',
+  'Dirty Talk',
+  'Begging',
+  'Praise Kink',
+  'Breeding Kink',
+  'Pregnancy Kink',
+  'Lactation',
+  'BBW/BHM',
+  'Curves',
+  'Athletic',
+  'Petite',
+  'Tall',
+  'Short',
+  'Age Gap',
+  'Mature/MILF',
+  'Silver Fox',
+  'Interracial',
+  'Hair Pulling',
+  'Biting',
+  'Scratching',
+  'Choking',
+  'Gagging',
+  'Collaring',
+  'Ownership',
+  'Aftercare',
+  'Safewords',
+];
+
+/// GENDER OPTIONS ///
+const List<String> GENDER_OPTIONS = ['Male', 'Female', 'Trans'];

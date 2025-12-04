@@ -1,3 +1,4 @@
+import 'package:dating_app/constants/constants.dart';
 import 'package:dating_app/datas/user.dart';
 import 'package:dating_app/dialogs/report_dialog.dart';
 import 'package:dating_app/models/user_model.dart';
@@ -98,6 +99,21 @@ class ProfileCard extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
+                          // Verification badge
+                          if (user.userVerificationStatus == 'verified')
+                            Container(
+                              margin: const EdgeInsets.only(left: 5),
+                              padding: const EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.check,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+                            ),
                         ],
                       ),
 
@@ -126,6 +142,12 @@ class ProfileCard extends StatelessWidget {
                           ),
                         ],
                       ),
+
+                      const SizedBox(height: 6),
+
+                      // Shared kinks (if any)
+                      if (user.userKinks != null && user.userKinks!.isNotEmpty)
+                        _buildKinkTags(),
 
                       /// User education
 
@@ -197,6 +219,10 @@ class ProfileCard extends StatelessWidget {
                     '${_appHelper.getDistanceBetweenUsers(userLat: user.userGeoPoint.latitude, userLong: user.userGeoPoint.longitude)}km'),
           ),
 
+          /// Show compatibility score on discover page
+          if (page == 'discover' && user.userKinks != null && user.userKinks!.isNotEmpty)
+            _buildCompatibilityBadge(context),
+
           /// Show Like or Dislike
           page == 'discover'
               ? ShowLikeOrDislike(position: position!)
@@ -229,6 +255,113 @@ class ProfileCard extends StatelessWidget {
                           ReportDialog(userId: user.userId).show()))
               : const SizedBox(width: 0, height: 0),
         ],
+      ),
+    );
+  }
+
+  /// Build kink tags widget
+  Widget _buildKinkTags() {
+    final sharedKinks = UserModel().getSharedKinks(user.userKinks);
+    final displayKinks = sharedKinks.isNotEmpty
+        ? sharedKinks.take(3).toList()
+        : (user.userKinks?.take(3).toList() ?? []);
+
+    if (displayKinks.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
+    return Wrap(
+      spacing: 5,
+      runSpacing: 5,
+      children: displayKinks.map((kink) {
+        final isShared = sharedKinks.contains(kink);
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: isShared ? Colors.pinkAccent : Colors.white.withOpacity(0.9),
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: isShared ? Colors.white : Colors.transparent,
+              width: 1.5,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (isShared)
+                const Icon(
+                  Icons.favorite,
+                  size: 12,
+                  color: Colors.white,
+                ),
+              if (isShared) const SizedBox(width: 4),
+              Text(
+                kink.toString(),
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: isShared ? FontWeight.bold : FontWeight.normal,
+                  color: isShared ? Colors.white : Colors.black87,
+                ),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  /// Build compatibility badge
+  Widget _buildCompatibilityBadge(BuildContext context) {
+    final compatibilityScore = UserModel().calculateCompatibilityScore(user.userKinks);
+
+    if (compatibilityScore == 0) {
+      return const SizedBox.shrink();
+    }
+
+    Color badgeColor;
+    if (compatibilityScore >= 75) {
+      badgeColor = Colors.green;
+    } else if (compatibilityScore >= 50) {
+      badgeColor = Colors.orange;
+    } else {
+      badgeColor = Colors.red;
+    }
+
+    return Positioned(
+      top: 10,
+      right: 45,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        decoration: BoxDecoration(
+          color: badgeColor,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              blurRadius: 6,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.favorite,
+              color: Colors.white,
+              size: 16,
+            ),
+            const SizedBox(width: 4),
+            Text(
+              '$compatibilityScore%',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

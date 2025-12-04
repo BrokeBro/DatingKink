@@ -1,7 +1,9 @@
+import 'package:dating_app/constants/constants.dart';
 import 'package:dating_app/dialogs/common_dialogs.dart';
 import 'package:dating_app/dialogs/progress_dialog.dart';
 import 'package:dating_app/helpers/app_localizations.dart';
 import 'package:dating_app/models/user_model.dart';
+import 'package:dating_app/screens/kink_selection_screen.dart';
 import 'package:dating_app/screens/profile_screen.dart';
 import 'package:dating_app/widgets/image_source_sheet.dart';
 import 'package:dating_app/widgets/svg_icon.dart';
@@ -25,8 +27,31 @@ class EditProfileScreenState extends State<EditProfileScreen> {
   final _jobController =
       TextEditingController(text: UserModel().user.userJobTitle);
   final _bioController = TextEditingController(text: UserModel().user.userBio);
+  late List<String> _selectedKinks;
   late AppLocalizations _i18n;
   late ProgressDialog _pr;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedKinks = UserModel().user.userKinks?.cast<String>() ?? [];
+  }
+
+  /// Navigate to kink selection screen
+  Future<void> _selectKinks() async {
+    final result = await Navigator.of(context).push<List<String>>(
+      MaterialPageRoute(
+        builder: (context) => KinkSelectionScreen(
+          initialSelectedKinks: _selectedKinks,
+        ),
+      ),
+    );
+    if (result != null) {
+      setState(() {
+        _selectedKinks = result;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -172,6 +197,52 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                   },
                 ),
                 const SizedBox(height: 20),
+
+                /// Kink selection card
+                Card(
+                  clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28),
+                    side: BorderSide(
+                      color: _selectedKinks.isEmpty
+                          ? Colors.grey[350]!
+                          : Theme.of(context).primaryColor,
+                      width: _selectedKinks.isEmpty ? 1 : 2,
+                    ),
+                  ),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.favorite,
+                      color: _selectedKinks.isEmpty
+                          ? Colors.grey
+                          : Theme.of(context).primaryColor,
+                    ),
+                    title: Text(
+                      _selectedKinks.isEmpty
+                          ? 'Select Your Kinks'
+                          : '${_selectedKinks.length} Kinks Selected',
+                      style: TextStyle(
+                        color: _selectedKinks.isEmpty
+                            ? Colors.grey
+                            : Colors.black,
+                        fontWeight: _selectedKinks.isEmpty
+                            ? FontWeight.normal
+                            : FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: _selectedKinks.isEmpty
+                        ? const Text('Tap to select')
+                        : Text(
+                            _selectedKinks.take(3).join(', ') +
+                                (_selectedKinks.length > 3 ? '...' : ''),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: _selectKinks,
+                  ),
+                ),
+                const SizedBox(height: 20),
               ],
             );
           }),
@@ -204,7 +275,15 @@ class EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   /// Update profile changes for TextFormField only
-  void _saveChanges() {
+  void _saveChanges() async {
+    /// First update kinks separately if changed
+    if (_selectedKinks.isNotEmpty) {
+      await UserModel().updateUserData(
+        userId: UserModel().user.userId,
+        data: {USER_KINKS: _selectedKinks},
+      );
+    }
+
     /// Update uer profile
     UserModel().updateProfile(
         userSchool: _schoolController.text.trim(),

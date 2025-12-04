@@ -29,6 +29,10 @@ class User {
   final int userTotalDisliked;
   final Map<String, dynamic>? userGallery;
   final Map<String, dynamic>? userSettings;
+  final List<dynamic>? userKinks;
+  final String? userVerificationPhoto;
+  final String? userVerificationStatus;
+  final bool userAgeVerified;
 
   // Constructor
   User({
@@ -58,6 +62,10 @@ class User {
     required this.userTotalLikes,
     required this.userTotalVisits,
     required this.userTotalDisliked,
+    this.userKinks,
+    this.userVerificationPhoto,
+    this.userVerificationStatus,
+    required this.userAgeVerified,
   });
 
   /// factory user object
@@ -89,6 +97,10 @@ class User {
       userTotalLikes: doc[USER_TOTAL_LIKES] ?? 0,
       userTotalVisits: doc[USER_TOTAL_VISITS] ?? 0,
       userTotalDisliked: doc[USER_TOTAL_DISLIKED] ?? 0,
+      userKinks: doc[USER_KINKS],
+      userVerificationPhoto: doc[USER_VERIFICATION_PHOTO],
+      userVerificationStatus: doc[USER_VERIFICATION_STATUS],
+      userAgeVerified: doc[USER_AGE_VERIFIED] ?? false,
     );
   }
 }

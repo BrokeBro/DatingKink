@@ -317,6 +317,8 @@ class UserModel extends Model {
     required String userSchool,
     required String userJobTitle,
     required String userBio,
+    required List<String> userKinks,
+    required bool userAgeVerified,
     // Callback functions
     required VoidCallback onSuccess,
     required Function(String) onFail,
@@ -357,6 +359,9 @@ class UserModel extends Model {
           USER_EMAIL: getFirebaseUser!.email ?? '',
           USER_STATUS: 'active',
           USER_LEVEL: 'user',
+          USER_KINKS: userKinks,
+          USER_AGE_VERIFIED: userAgeVerified,
+          USER_VERIFICATION_STATUS: 'unverified',
           // User location info
           USER_GEO_POINT: geoPoint.data,
           USER_COUNTRY: '',
@@ -372,6 +377,7 @@ class UserModel extends Model {
             //USER_SHOW_ME: 'everyone',
             USER_MAX_DISTANCE:
                 AppModel().appInfo.freeAccountMaxDistance, // double
+            USER_FILTER_KINKS: [], // Empty list initially
           },
         })
         .then((_) async {
@@ -713,5 +719,49 @@ class UserModel extends Model {
     }
     // Returns the result query
     return query;
+  }
+
+  /// Calculate compatibility score between current user and another user
+  /// Returns a percentage (0-100) based on shared kinks
+  int calculateCompatibilityScore(List<dynamic>? otherUserKinks) {
+    if (user.userKinks == null || user.userKinks!.isEmpty) {
+      return 0;
+    }
+    if (otherUserKinks == null || otherUserKinks.isEmpty) {
+      return 0;
+    }
+
+    // Convert to sets for easier comparison
+    final Set<String> currentUserKinks = user.userKinks!.toSet().cast<String>();
+    final Set<String> targetUserKinks = otherUserKinks.toSet().cast<String>();
+
+    // Calculate shared kinks
+    final sharedKinks = currentUserKinks.intersection(targetUserKinks);
+
+    // Calculate compatibility percentage
+    // Based on the smaller set to avoid unfair scoring
+    final smallerSetSize = currentUserKinks.length < targetUserKinks.length
+        ? currentUserKinks.length
+        : targetUserKinks.length;
+
+    if (smallerSetSize == 0) return 0;
+
+    final double percentage = (sharedKinks.length / smallerSetSize) * 100;
+    return percentage.round();
+  }
+
+  /// Get list of shared kinks between current user and another user
+  List<String> getSharedKinks(List<dynamic>? otherUserKinks) {
+    if (user.userKinks == null || user.userKinks!.isEmpty) {
+      return [];
+    }
+    if (otherUserKinks == null || otherUserKinks.isEmpty) {
+      return [];
+    }
+
+    final Set<String> currentUserKinks = user.userKinks!.toSet().cast<String>();
+    final Set<String> targetUserKinks = otherUserKinks.toSet().cast<String>();
+
+    return currentUserKinks.intersection(targetUserKinks).toList();
   }
 }

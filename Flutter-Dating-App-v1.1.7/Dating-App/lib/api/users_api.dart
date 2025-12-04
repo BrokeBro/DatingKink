@@ -80,11 +80,21 @@ class UsersApi {
       debugPrint('removeBlockedUsers() -> error: $e');
     });
 
-    /// Sort by newest
+    /// Sort by compatibility score (highest first), then by newest
     allUsers.sort((a, b) {
+      // Calculate compatibility scores
+      final int scoreA = UserModel().calculateCompatibilityScore(a[USER_KINKS]);
+      final int scoreB = UserModel().calculateCompatibilityScore(b[USER_KINKS]);
+
+      // Sort by compatibility first
+      if (scoreA != scoreB) {
+        return scoreB.compareTo(scoreA); // Higher score first
+      }
+
+      // If scores are equal, sort by newest
       final DateTime userRegDateA = a[USER_REG_DATE].toDate();
       final DateTime userRegDateB = b[USER_REG_DATE].toDate();
-      return userRegDateA.compareTo(userRegDateB);
+      return userRegDateB.compareTo(userRegDateA);
     });
 
     final int minAge = settings[USER_MIN_AGE];

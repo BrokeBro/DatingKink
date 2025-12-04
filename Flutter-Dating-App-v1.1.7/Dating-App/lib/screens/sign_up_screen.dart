@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:dating_app/constants/constants.dart';
 import 'package:dating_app/dialogs/common_dialogs.dart';
 import 'package:dating_app/helpers/app_localizations.dart';
 import 'package:dating_app/models/user_model.dart';
+import 'package:dating_app/screens/kink_selection_screen.dart';
 import 'package:dating_app/screens/sign_in_screen.dart';
 import 'package:dating_app/screens/update_location_sceen.dart';
 import 'package:dating_app/widgets/image_source_sheet.dart';
@@ -40,8 +42,9 @@ class SignUpScreenState extends State<SignUpScreen> {
   String? _birthday;
   File? _imageFile;
   bool _agreeTerms = false;
+  bool _ageVerified = false;
   String? _selectedGender;
-  final List<String> _genders = ['Male', 'Female'];
+  List<String> _selectedKinks = [];
   late AppLocalizations _i18n;
 
   /// Set terms
@@ -49,6 +52,29 @@ class SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       _agreeTerms = value;
     });
+  }
+
+  /// Set age verification
+  void _setAgeVerified(bool value) {
+    setState(() {
+      _ageVerified = value;
+    });
+  }
+
+  /// Navigate to kink selection screen
+  Future<void> _selectKinks() async {
+    final result = await Navigator.of(context).push<List<String>>(
+      MaterialPageRoute(
+        builder: (context) => KinkSelectionScreen(
+          initialSelectedKinks: _selectedKinks,
+        ),
+      ),
+    );
+    if (result != null) {
+      setState(() {
+        _selectedKinks = result;
+      });
+    }
   }
 
   /// Get image from camera / gallery
@@ -227,7 +253,7 @@ class SignUpScreenState extends State<SignUpScreen> {
 
                     /// User gender
                     DropdownButtonFormField<String>(
-                      items: _genders.map((gender) {
+                      items: GENDER_OPTIONS.map((gender) {
                         return DropdownMenuItem(
                           value: gender,
                           child: _i18n.translate("lang") != 'en'
@@ -318,9 +344,59 @@ class SignUpScreenState extends State<SignUpScreen> {
                         return null;
                       },
                     ),
+                    const SizedBox(height: 20),
+
+                    /// Kink selection card
+                    Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(28),
+                        side: BorderSide(
+                          color: _selectedKinks.isEmpty
+                              ? Colors.grey[350]!
+                              : Theme.of(context).primaryColor,
+                          width: _selectedKinks.isEmpty ? 1 : 2,
+                        ),
+                      ),
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.favorite,
+                          color: _selectedKinks.isEmpty
+                              ? Colors.grey
+                              : Theme.of(context).primaryColor,
+                        ),
+                        title: Text(
+                          _selectedKinks.isEmpty
+                              ? 'Select Your Kinks'
+                              : '${_selectedKinks.length} Kinks Selected',
+                          style: TextStyle(
+                            color: _selectedKinks.isEmpty
+                                ? Colors.grey
+                                : Colors.black,
+                            fontWeight: _selectedKinks.isEmpty
+                                ? FontWeight.normal
+                                : FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: _selectedKinks.isEmpty
+                            ? const Text('Required - Tap to select')
+                            : Text(
+                                _selectedKinks.take(3).join(', ') +
+                                    (_selectedKinks.length > 3 ? '...' : ''),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                        onTap: _selectKinks,
+                      ),
+                    ),
+
+                    /// Age verification
+                    const SizedBox(height: 5),
+                    _ageVerificationCheckbox(),
+                    const SizedBox(height: 5),
 
                     /// Agree terms
-                    const SizedBox(height: 5),
                     _agreePrivacy(),
                     const SizedBox(height: 20),
 
@@ -355,6 +431,18 @@ class SignUpScreenState extends State<SignUpScreen> {
           context: context,
           message: _i18n.translate("please_select_your_profile_photo"),
           bgcolor: Colors.red);
+    } else if (_selectedKinks.isEmpty) {
+      // Show error message
+      showScaffoldMessage(
+          context: context,
+          message: "Please select at least one kink to continue",
+          bgcolor: Colors.red);
+    } else if (!_ageVerified) {
+      // Show error message
+      showScaffoldMessage(
+          context: context,
+          message: "You must confirm that you are 18 years or older",
+          bgcolor: Colors.red);
       // validate terms
     } else if (!_agreeTerms) {
       // Show error message
@@ -388,6 +476,8 @@ class SignUpScreenState extends State<SignUpScreen> {
         userSchool: _schoolController.text.trim(),
         userJobTitle: _jobController.text.trim(),
         userBio: _bioController.text.trim(),
+        userKinks: _selectedKinks,
+        userAgeVerified: _ageVerified,
         onSuccess: () async {
           // Show success message
           successDialog(context,
@@ -417,6 +507,42 @@ class SignUpScreenState extends State<SignUpScreen> {
         },
       );
     }
+  }
+
+  /// Handle Age verification checkbox
+  Widget _ageVerificationCheckbox() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: <Widget>[
+          Checkbox(
+            activeColor: Theme.of(context).primaryColor,
+            value: _ageVerified,
+            onChanged: (value) {
+              _setAgeVerified(value!);
+            },
+          ),
+          GestureDetector(
+            onTap: () => _setAgeVerified(!_ageVerified),
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(fontSize: 16, color: Colors.black),
+                children: [
+                  const TextSpan(text: 'I confirm that I am '),
+                  TextSpan(
+                    text: '18 years or older',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   /// Handle Agree privacy policy
