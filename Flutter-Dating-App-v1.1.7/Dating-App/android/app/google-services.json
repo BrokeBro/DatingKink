@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461843801975",
+    "project_id": "kinkprod-5f88d",
+    "storage_bucket": "kinkprod-5f88d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461843801975:android:6e1ec875e6cdb7f51d2372",
+        "android_client_info": {
+          "package_name": "com.brokebro.kink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-QSIoyFLrbaYQiKNk3GzfrG9G8b8hjbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

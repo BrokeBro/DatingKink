@@ -1,0 +1,1425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Flutter Complete Dating App for Android & iOS with Admin Panel</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css"
+		media="screen, projection">
+	<style type="text/css" media="screen">
+		p,
+		table,
+		hr,
+		.box {
+			margin-bottom: 25px;
+		}
+
+		.box p {
+			margin-bottom: 10px;
+		}
+
+		.colorRed {
+			color: red;
+			font-weight: bold;
+		}
+
+		.colorBlue {
+			color: rgb(0, 153, 255);
+			font-weight: bold;
+		}
+
+		.bgPink {
+			background-color: rgb(233, 10, 159);
+			color: white;
+			font-weight: bold;
+			padding: 10px;
+			border-radius: 25px;
+		}
+
+		.cmdBackgroundColor {
+			background-color: black;
+			color: white;
+			padding: 6px;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+
+		<h3 class="center alt">&ldquo;Flutter Complete Dating App for Android & iOS with Admin Panel&rdquo;
+			Documentation by &ldquo;Americo Bila&rdquo; v1.1.7</h3>
+
+		<hr>
+
+		<h1 class="center">&ldquo;Flutter Complete Dating App for Android & iOS with Admin Panel&rdquo;</h1>
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+						Updated: April 16, 2025<br>
+						By: Americo Bila<br>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->
+
+			<div class="span-12 last">
+				<p class="prepend-top append-0">
+					Thank you for purchasing our "Flutter Complete Dating App for Android & iOS with Admin Panel".</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		<hr />
+		<div id="support">
+			<h2 class="colorBlue">About Support</h2>
+			<p>If you have any questions, or facing any issue that are related to our <strong>Dating App & Admin Panel
+					source codes</strong>, please feel free to contact us using this email address: <strong><a
+						href="mailto:info.dating.app@gmail.com">info.dating.app@gmail.com</a></strong></p>
+
+			<p><strong>Support Response Time:</strong> <br />
+				Our response time for support is <strong>2-Business Days</strong> which means when you send us a request
+				for support you need to wait at least <strong>48-hours</strong> to get our response!<br />
+
+				<strong class="colorRed">So don't expect quick replies!</strong><br />
+				<strong class="colorBlue">But always we do our best to support our customers as soon as
+					possible!</strong>
+			</p>
+
+			<p><strong>Our Time Zone & Working time</strong>
+			<ul>
+				<li><strong>Time Zone:</strong> <strong class="colorBlue">UTC +2</strong> = Coordinated Universal Time -
+					Check our current time now <a href="https://time.is/GMT+2" target="_blank">here</a></li>
+				<li><strong>Working time: 9:00 AM to 5:00 PM - Monday to Friday</strong></li>
+			</ul>
+
+			<hr />
+			<p>Thank you very much and <strong>Get-started</strong> with your Dating App Project!</p>
+		</div>
+
+		<hr />
+
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol>
+			<li><a href="#content01">Project Overview</a></li>
+			<li><a href="#content02">Project requirements</a></li>
+			<li><a href="#content03">Get Started with Flutter</a></li>
+			<li><a href="#content04">Open Dating App Project</a></li>
+			<li><a href="#content05">Project Structure</a></li>
+			<li><a href="#content06">Change app information</a></li>
+			<li><a href="#content07">Change app package name</a></li>
+			<li><a href="#content08">Change app logo</a>
+				<br>
+				<a href="#update-splash-screen-logo"><strong class="colorRed">NEW - Update splash screen
+						logo</strong></a>
+			</li>
+			<li><a href="#content09">Add New Language Translation</a></li>
+			<li>
+				<a href="#content10">Create Firebase Project</a>
+				<br>
+				<a href="#dating-app-new-firebase-init"><strong class="colorRed">NEW - Firebase initialization for
+						Dating App</strong></a>
+			</li>
+			<li><a href="#content11">Enable Phone Number Authentication</a></li>
+			<li><a href="#content12">Change Cloud Firestore Database Rules</a></li>
+			<li><a href="#content13">Setup Admob App ID</a></li>
+			<li><a href="#content14">Run and Debug App</a></li>
+			<li><a href="#content15">Build and Release App</a></li>
+			<li><a href="#content16">Create In-App Purchases - (VIP Subscriptions)</a>
+			<li><a href="#content17">Setup the <strong>Passport</strong> feature</a>
+			<li><a href="#content18"><strong class="colorRed">Upload Cloud Functions for Push
+						Notifications</strong></a></li>
+			<br />
+		</ol>
+
+		<hr />
+		<p style="margin-left: 20px; color: grey">LAST STEP: ADMIN PANEL SECTION</p>
+		<h4 style="margin-left: 20px;"><a href="#setup-admin-panel">Setup & Upload Admin Panel</h4>
+
+		<hr />
+
+		<br />
+		<br />
+		<h3 id="content01"><strong>01) Project Overview</strong> - <a href="#toc">top</a></h3>
+
+		<p>Flutter Complete Dating App for Android & iOS with Admin Panel is a full functional application
+			that is ready to go production, however you need to follow some Steps to build your
+			app release and publish it on your Google Play Store or Apple Store account.</p>
+
+		<p><strong>App Features</strong></p>
+		<ul>
+			<li>VIP Subscriptions - (In-App purchases)</li>
+			<li>Admob Interstials Ads</li>
+			<li>Multi-language support</li>
+			<li>Push notifications - (New like, visit and message) </li>
+			<li>Swipe Left/Right - (like tinder profile cards)</li>
+			<li>It's a Match dialog</li>
+			<li>Chat with text and image</li>
+			<li>Sign in with phone number</li>
+			<li>Report User Profile feature</li>
+			<li>Profile statistics (Total likes, visits, dislikes) </li>
+			<li>Share the app with friends</li>
+			<li>Rate app on app stores</li>
+			<li>Get location by GPS</li>
+			<li>Show Users based on geolocation distance radius in (km)</li>
+			<li>Update location</li>
+			<li>Change max distance radius in (km)</li>
+			<li>Change age range filter</li>
+			<li>Alert user to enable GPS</li>
+			<li>Redirect user to enable location permission in device settings</li>
+			<li>Redirect user to blocked account screen</li>
+			<li>Redirect user to update app</li>
+			<li>Sign out button</li>
+			<li>Delete Account button</li>
+			<li>Hide user profile</li>
+			<li>Show me Filter: Men, Women or Everyone</li>
+			<li><strong>Passport</strong> feature</li>
+			<li><strong>Backend Server: Firebase & Cloud Firestore Database</strong></li>
+		</ul>
+
+
+		<p><strong>App Screens</strong></p>
+		<ul>
+			<li>Splash Screen</li>
+			<li>Sign In Screen</li>
+			<li>Login with Phone Number Screen</li>
+			<li>Verification Code Screen (OTP) </li>
+			<li>Sign Up Screen</li>
+			<li>Home Screen</li>
+			<li>Profile Screen</li>
+			<li>Profile Likes Screen</li>
+			<li>Profile Visits Screen</li>
+			<li>Disliked Profiles Screen</li>
+			<li>Edit Profile Screen</li>
+			<li>Notifications Screen</li>
+			<li>Chat Screen</li>
+			<li>It’s Match Dialog</li>
+			<li>About Us Screen</li>
+			<li>Blocked Account Screen</li>
+			<li>Enable Location Screen</li>
+			<li>Settings Screen</li>
+			<li>Update App Screen</li>
+			<li>Delete Account Screen</li>
+			<li><strong>Passport</strong> Screen</li>
+		</ul>
+
+		<p><strong>Tabs</strong></p>
+		<ul>
+			<li>Discover Tab</li>
+			<li>Matches Tab</li>
+			<li>Conversations Tab</li>
+			<li>Profile Tab</li>
+		</ul>
+
+		<p><strong>Icons</strong></p>
+		<p>Beautiful outline SVG icons used in project</p>
+
+		<hr />
+
+		<h3 id="content02"><strong>02) Project requirements</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>Backend Server: <strong><a href="https://console.firebase.google.com/" target="_blank">Firebase</a></strong></li>
+			<li>Install the latest <strong><a href="https://docs.flutter.dev/release/archive" target="_blank">Flutter SDK v3.29.x</a></strong></li>
+			<li>Recommended Editors: <strong>Visual Studio Code/ Android Studio/ and latest Xcode</strong> to build iOS verison</li>
+		</ul>
+
+		<hr />
+
+		<h3 id="content03"><strong>03) Get Started with Flutter</strong> - <a href="#toc">top</a></h3>
+		<p><strong>What is flutter?</strong></p>
+		<p>Flutter is an open-source cross-platform mobile application SDK developed by Google.<br />
+			It is used to develop applications for Android, iOS, Linux, Mac, Windows, Google Fuchsia, and the web
+			from a single codebase.
+			Flutter is written in Dart language.</p>
+
+		<p><strong>Why Flutter?</strong></p>
+		<p>Flutter saves companies the need to employ different iOS and Android developers to build the same app
+			since it supports cross-platforms development.</p>
+
+		<p><strong>Development Platforms</strong></p>
+		<p>After having a basic idea of what flutter is, now it's time to setup your <strong>dating_app</strong>
+			project.</p>
+		<p>Flutter requires <strong>Flutter SDK</strong> to be installed first.<br />
+		<p>Please check this link <a
+				href="https://flutter.dev/docs/get-started/install">https://flutter.dev/docs/get-started/install</a>
+			for official documentation on steps how to install <strong>Flutter SDK</strong> on your Operating System
+			and set up your <strong>favourable editor</strong>.</p>
+
+		<hr />
+
+		<h3 id="content04"><strong>04) Open Dating App Project</strong> - <a href="#toc">top</a></h3>
+		<p>How to open project using the <strong>Visual Studio Code</strong>; - (For other IDEs please follow their
+			official instructions)</p>
+		<ol>
+			<li>Start the <strong>Visual Studio Code.</strong> or your favorite IDE Editor</li>
+			<li>Select File > Open Folder from the main menu and then choose > <strong>Flutter Dating App > SOURCE
+					CODES > <span class="colorRed">dating_app</span></strong> folder.</li>
+			<li>Run the this <strong>command:</strong> <span class="cmdBackgroundColor">flutter pub get</span> on
+				your <strong>Terminal</strong> Editor <strong>to get flutter packages.</strong></li>
+		</ol>
+
+		<hr />
+
+		<h3 id="content05"><strong>05) Project Structure</strong> - <a href="#toc">top</a></h3>
+
+		<p><strong>Check the project structure and open the <span class="colorBlue">pubspec.yaml</span>
+				file</strong></p>
+		<p><strong>Note:</strong> The <strong>version numbers</strong> of the packages below are always
+			<strong>subject to change</strong>, we still use the image for demo purposes!
+		</p>
+		<img src="assets/images/project_structure.png" alt="Project Structure" />
+		<br />
+		<br />
+		<p><strong>Cloud Firestore Database Collection Names</strong></p>
+		<img src="assets/images/database_collection_names.png" alt="Database Collection Names" />
+		<hr>
+
+		<h3 id="content06"><strong>06) Change app information</strong> - <a href="#toc">top</a></h3>
+		<p>Open project -> <strong>dating_app/lib/constants/constants.dart</strong><br />
+			Change application info with your own: <br />
+		<ol><strong>
+				<li>App Name</li>
+				<li>App Theme Colors</li>
+				<li>App Version Number and other Settings</li>
+			</strong>
+		</ol>
+
+		check the image below.</p>
+		<img src="assets/images/change_app_info.png" alt="Change app information" />
+		<hr />
+
+		<h3 id="content07"><strong>07) Change app package name</strong> - <a href="#toc">top</a></h3>
+
+		<p>The <strong>App Package Name</strong> is the <strong>Unique ID</strong> that represents your aplication
+			on app Stores.<br />
+			It extends from your <strong>reversed domain name + your app name</strong>,<br />
+			e.g: <strong>company.com</strong> will be <strong>com.brokebro.kink</strong> and before creating it
+			make sure that is <strong>unique.</strong></p>
+
+		<p>Open project > <strong>dating_app</strong> project and Search for this package name: <span
+				class="colorRed">com.brokebro.kink</span> in whole project and replace it with your own.<br />
+			Tip: If you are using <strong>Visual Studio Code:</strong> Click on Edit tab and then choose ->
+			<strong>"Replace in Files"</strong> option to change it.
+		</p>
+
+		<hr />
+
+		<h3 id="content08"><strong>08) Change app logo</strong> - <a href="#toc">top</a></h3>
+
+		<p>3.1) Create your app logo and name it <strong class="colorRed">"app_logo"</strong> with <strong
+				class="colorRed">png</strong> extension.</p>
+		<p>3.2) Open project and go to -> <strong>dating_app/assets/images/</strong> and paste it replacing the
+			existing one and also replace
+			<strong>dating_app/assets/images/sign_in_screen.dart</strong> background image, check the image below.
+		</p>
+		<img src="assets/images/change_app_logo.png" alt="Change app logo" />
+		<br />
+		<br />
+
+		<div id="update-app-launcher-icon">
+			<p><strong>3.3) Update app launcher icon</strong></p>
+			<p>Open project -> <strong>dating_app</strong> > Select Terminal of your IDE and run the below commands:
+			</p>
+
+			<p>Run first command: <br />
+				<span class="cmdBackgroundColor">flutter pub get</span>
+			</p>
+
+			<p>Run second command: <br />
+				<span class="cmdBackgroundColor">dart run flutter_launcher_icons</span>
+			<p>
+
+			<p>Note: The above commands will update app launcher icon in whole project for both android and ios.</p>
+		</div>
+
+
+		<div id="splash-logo-steps">
+			<h3 id="update-splash-screen-logo" class="colorBlue">3.4) <strong> <span class="colorRed">NEW</span> -
+					<span style="color: black;">Update splash screen logo</span></strong></h3>
+			<p>Open project -> <strong>dating_app</strong> > Select Terminal of your IDE and run the below command:
+			</p>
+
+			<p>Run this command: <br />
+				<span class="cmdBackgroundColor">dart run flutter_native_splash:create</span>
+			<p>
+
+			<p>
+				<strong class="colorRed">Note:</strong> If you want to <strong>customize the splash screen
+					logo</strong> or change the default <strong>app_logo splash</strong>, please open the
+				<strong>pubspec.yaml</strong> file located in the <strong>{app dir}/<span
+						class="colorRed">dating_app</span>/</strong> directory and <strong>scroll to bottom</strong>
+				and update the settings below:<br />
+				<br>
+				<span style="color: rgb(48, 87, 214)">
+					<strong>flutter_native_splash:</strong><br>
+					&nbsp; color: <span style="color: orange;">"#ffffff"</span> <br />
+					&nbsp; image: <span style="color: orange;">"assets/images/app_logo.png"</span> <br />
+					&nbsp; android: true<br>
+					&nbsp; ios: true<br>
+				</span>
+			</p>
+
+			<p><strong>Note:</strong> The above command will update the <strong>splash logo</strong> for both
+				android & ios.</p>
+		</div>
+
+
+		<hr />
+
+		<h3 id="content09"><strong>09) Add New Language Translation</strong> - <a href="#toc">top</a></h3>
+
+		<p>The <strong>dating_app</strong> project is ready to support <strong>Multi-Language</strong>, but the
+			current one is <strong>English</strong>. <br />
+			If you want to add other language <strong>translations</strong>, please follow the below instructions:
+		</p>
+
+		<ol>
+			<li>Go to <strong>{app dir}/dating_app/assets/lang/en.json</strong> as seen below:<br />
+				<br />
+				<img src="assets/images/add_new_language.png" alt="Add New Language Translation">
+			</li>
+			<br />
+			<li>Copy the <strong>en.json</strong> file shown above and <strong>rename</strong> it to the <strong>new
+					language</strong> you want to support
+				e.g: <strong>fr.json</strong> and start <strong>translating</strong> words to that language. <br />
+
+				<p><strong>Rules to define new languages</strong>: All language code identifiers must be
+					<strong>2-letter</strong> that represents <strong>standard language code</strong> in lowercase.
+					e.g: ( <strong>es.json</strong> not <strong class="colorRed">ES.json</strong>) - Check the
+					complete list of <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">ISO
+						639-1</a> language codes.
+				</p>
+			</li>
+
+			<li><strong>How to translate</strong>
+
+				<ul>
+					<li>Translate only the words on the right, <strong>without underscores</strong> as seen on image
+						above.</li>
+					<li><span class="colorRed">Don't touch the words with underscores</span>, they are keys used in
+						the app source code.</li>
+				</ul>
+			</li>
+
+			<br />
+
+			<li>Add new <strong>language code</strong> identifier to the <strong>Array List Constant:</strong>
+				SUPPORTED_LOCALES</p>
+				<p>Go to <strong>{app dir}/dating_app/constants/constants.dart</strong> and locate
+					<strong>SUPPORTED_LOCALES</strong> Array List Constant as seen below:
+					<br />
+					<img src="assets/images/add_new_lang_to_the_list.png" alt="Add New Language Code">
+				<p><strong>E.g:</strong> SUPPORTED_LOCALES = <strong>[Locale('en'), Locale('fr'),
+						Locale('es')];</strong> note that we have added ( two locales: <strong>Locale('fr') and
+						Locale('es')</strong> ).</p>
+			</li>
+		</ol>
+
+		<hr />
+		<h3 id="content10"><strong>10) Create Firebase Project</strong> - <a href="#toc">top</a></h3>
+
+		<p>Before running the dating_app project, first you must integrate it with your Firebase App Project.</p>
+
+		<h4><strong>Step 1:</strong> Go to firebase website: <a href='https://firebase.google.com'
+				target='_blank'>https://firebase.google.com</a></h4>
+
+		<p>Tap the <a href='https://console.firebase.google.com' target='_blank'>Go to console</a> button and then
+			sign in using your Google account or create a new one there.</p>
+
+		<img src="assets/images/goto_firebase_console.png" alt="Go to Firebase Console" />
+		<br />
+		<br />
+
+		<h4><strong>Step 2:</strong> Create new Firebase Project or use an existing one.</h4>
+
+		<p>Start by adding your project name and follow the remaining firebase steps, check on image below. <br />
+			<strong>Note:</strong> The Project ID also will be your application domain e.g:
+			<strong>https://dating-app-xxx.web.app</strong> and later you will need it to host your dating app
+			<strong>Admin Panel</strong>.
+		</p>
+
+		<img src="assets/images/create_firebase_project.png" alt="Create firebase project" />
+		<br />
+		<br />
+
+		<h4 id="step3"><strong>Step 3:</strong> Register a new Application</h4>
+
+		<h4 class="bgPink">Register Android App</h4>
+
+		<p>1.) Register a new Android application or use an existing Android app.</p>
+
+		<p>Tap the <strong>Add app</strong> button and the dialog will show up to let you select the platform, check
+			the image below:</p>
+		<img src="assets/images/add_android_app.png" alt="Register New App" />
+		<br />
+		<br />
+		<img src="assets/images/register_android_app.png" alt="Register Android App" />
+		<br />
+		<br />
+		<p><strong>Note:</strong> The <strong>"Android package name"</strong> must match your
+			<strong>dating_app</strong> project's package name.
+		</p>
+		<ul>
+			<li>Add your dating_app package name</li>
+			<li>Add your dating_app App nickname</li>
+			<li>Leave the SHA-1 debug signature certificate blank for now</li>
+		</ul>
+
+
+		<!-- Generate the firebase_options.dart for Dating App -->
+		️ <h2 id="dating-app-new-firebase-init" class="colorBlue"><strong> <span class="colorRed">NEW</span> - <span
+					style="color: black;">Firebase initialization</span> for Dating App</strong></h2>
+		<p>The Flutter Apps now supports Firebase initialization directly from Dart Code!</p>
+
+		<p>Please follow the steps below to get-started.</p>
+
+		<h3><strong>
+				Generate the <span class="colorRed">firebase_options.dart</span> for your Dating App.</strong></h3>
+
+		<p>First of all you need to install the <a href="https://firebase.flutter.dev/docs/cli/"
+				target="_blanck">FlutterFire CLI</a> on your machine.<br />
+			Please follow the instructions below:</p>
+
+		<p><strong>Installation</strong><br />
+			<strong class="colorRed">Note:</strong> The FlutterFire CLI depends on the underlying Firebase CLI.
+			If you haven't already done so, make sure you have the <a href="https://firebase.google.com/docs/cli"
+				target="_blanck">Firebase CLI</a> installed on
+			your machine. If not, <span class="colorRed">make sure</span> you have <a href="https://www.nodejs.org/"
+				target="_blanck"><strong>Node.js</strong></a> on your machine and Install the
+			Firebase CLI via <strong>npm</strong> by running the following command :
+		</p>
+
+		<p><span class="cmdBackgroundColor">npm install -g firebase-tools</span></p>
+
+		<p>Next, install the <strong>FlutterFire CLI</strong> by running the following command:</p>
+
+		<p><span class="cmdBackgroundColor">dart pub global activate flutterfire_cli</span>
+			<br> <br>
+			Once installed, the flutterfire command will be globally available and make sure to follow the wizard
+			installation.
+		</p>
+
+		<h3><strong>Generate the <span class="colorRed">firebase_options.dart</span></strong></h3>
+		<p>Run the <strong>`configure`</strong> command below to select your <strong>Firebase project</strong>.
+			<br />
+			<strong class="colorRed">Example:</strong> Select <strong style="color: green;">android</strong> or
+			<strong class="colorBlue">ios</strong> or keep both selected if you want the configuration for both
+			platforms.
+		</p>
+
+		<p>Please run the commands below:</p>
+		<ol>
+			<li>
+				<p><span class="cmdBackgroundColor">firebase login</span> - Make sure to <strong>Login</strong> to
+					your <strong>Firebase</strong> account first.</p>
+			</li>
+			<li>
+				<p><span class="cmdBackgroundColor">flutterfire configure</span> - Generate the
+					<strong>firebase_options.dart</strong> file
+				</p>
+			</li>
+		</ol>
+
+		<p>Once configured, a <span class="colorRed">firebase_options.dart</span> file will be
+			<strong>generated</strong> for you containing all the options required for initialization.
+		</p>
+		<!-- END Generate the firebase_options.dart -->
+
+		<!-- OLD INITIALIZATION -->
+		<h2 class="colorBlue"><strong> <span class="colorRed">MANUAL</span> - <span style="color: black;">Firebase
+					initialization</span> - OPTIONAL</strong></h2>
+		<p><span class="colorRed">Note:</span>
+			If you don't use the <span class="colorBlue">Login with Google</span> provider you can <strong>SKIP the
+				instructions below</strong> to add the <strong class="colorRed">google-services.json</strong> &
+			<strong class="colorRed">GoogleService-Info.plist</strong> files in your app.</strong>
+		</p>
+
+		<p><strong>Manual initialization - instructions:</strong> </p>
+		<p>2.) Once your Android app has been registered, download the <strong>google-services.json</strong>
+			configuration file from the Firebase Console.</p>
+
+		<p>3.) Move or copy the <strong>google-services.json</strong> file into the {app dir}/dating_app/android/app
+			directory check the image below.<br />
+			<strong>Note:</strong> After downloading the file, ignore the remaining firebase instructions tapping
+			(Next...) to finish, the rest of the work we have already pre-configured them in project.
+		</p>
+		<img src="assets/images/paste_android_google_services_file.png" alt="Add Google Services json file" />
+
+		<hr />
+
+		<h4 class="bgPink">Register iOS App - ( You need to have an Apple computer and Developer Account)</h4>
+
+		<p class="colorRed">To connect iOS app, you need to have an Apple computer with latest version of Xcode
+			installed on it.</p>
+
+		<p><strong>Please check <a href="#step3">(Step 3)</a> above to register your iOS app, the instructions are
+				similar to Android.</strong></p>
+
+		<p>1.) Register a new iOS application or use an existing iOS app.</p>
+
+		<p><strong>Note:</strong> The "iOS bundle ID" must match your dating_app project's package name.</p>
+		<ul>
+			<li>Add your dating_app iOS bundle ID == (package name)</li>
+			<li>Add your dating_app App nickname</li>
+			<li>Leave the App Store ID blank for now</li>
+		</ul>
+
+		<p>2.) Once your iOS app has been registered, Download the <strong>GoogleService-Info.plist</strong>
+			configuration file from the Firebase Console.<br />
+			<strong>Note:</strong> After downloading the file, ignore the remaining firebase instructions tapping
+			(Next...) to finish, the rest Flutter will handle in app.
+		</p>
+
+		<p>3.) Open <strong>dating_app/ios</strong> directory with your <strong>Xcode</strong> Editor IDE.</p>
+
+		<p>4.) Copy the <strong>GoogleService-Info.plist</strong> file and Paste it into the <strong>{app
+				dir}/dating_app/ios/Runner</strong> directory.</p>
+
+		<p>5.) A dialog will show up and ask you to select the targets, select the <strong>Runner</strong> target
+			and tap <strong>finish</strong> button.</p>
+
+		<p>6.) After adding the <strong>GoogleService-Info.plist</strong> tap on it and look for
+			<strong>REVERSED_CLIENT_ID</strong> copy its value
+			and then add into the <strong>dating_app/ios/Runner/Info.plist</strong> file as seen below:
+		</p>
+		<img src="assets/images/google_reversed_client_id.png" alt="Add Google Google URL Scheme" />
+
+		<hr />
+
+
+		<h3 id="content11"><strong>11) Enable Phone Number Authentication</strong> - <a href="#toc">top</a></h3>
+
+		<p>The <strong>dating_app</strong> project for a while only uses <strong>Phone Number
+				Authentication</strong> to Login and Sign Up Users in app,
+			so you need to Enable Phone Provider in your firebase project.</p>
+
+		<ol>
+			<li>Go to your <a href='https://console.firebase.google.com' target='_blank'>Firebase Console</a>
+				project</li>
+			<li>Click on <strong>Authentication</strong> from the menu bar</li>
+			<li>Tap on Sign-in method</li>
+			<li>Select <strong>Phone</strong> Provider to Enable authentication</li>
+		</ol>
+
+		<p>Check the image below:</p>
+		<img src="assets/images/enable_phone_number_auth.png" alt="Enable phone authentication" />
+		<br />
+		<br />
+		<br />
+		<br />
+		<h4><strong>Add Phone Numbers for testing</strong></h4>
+		<p><strong>Note:</strong> The phone number authentication doesn't work on <strong>emulator</strong> device,
+			so you need to add numbers for testing while you are still running dating app project on emulator.</p>
+
+		<p>After enabling phone provider, scroll down and tap on Phone numbers for <strong>testing</strong> as seen
+			below.</p>
+		<img src="assets/images/add_test_number.png" alt="Add Phone Numbers for testing" />
+		<br />
+		<br />
+		<br />
+		<br />
+		<h4><strong>Setup for Android App</strong></h4>
+		<p>The setup for <strong>Android App</strong> is discussed after you have <a href="#content14">Released an
+				Android App</a></p>
+
+		<h4><strong>Setup for iOS App</strong> - <span class="colorRed">(Optional if you don't have an Apple
+				computer and Developer Account)</span></h4>
+		<ol>
+			<li>Open <strong>dating_app</strong> project using <strong>Xcode</strong> Editor and <a
+					href="http://help.apple.com/xcode/mac/current/#/devdfd3d04a1" target="_blank">Enable push
+					notifications</a> to receive verification code by SMS</li>
+			<br />
+			<li><a href="https://firebase.google.com/docs/cloud-messaging/ios/certs" target="_blank">Click here</a>
+				to follow the official Firebase documentation on how to get <strong>APNs Auth Key</strong> for your
+				iOS firebase app.</li>
+			<br />
+			<li>Add <strong>APNs Auth Key</strong> in your iOS firebase app, check the image below:</li>
+			<br />
+			<img src="assets/images/add_apns_auth_key.png" alt="Add APNs Auth Key" />
+		</ol>
+
+		<hr />
+
+
+		<h3 id="content12"><strong>12) Change Cloud Firestore Database Rules</strong> - <a href="#toc">top</a></h3>
+
+		<p>Go back to your <a href='https://console.firebase.google.com' target='_blank'>Firebase Console</a>
+			project</p>
+
+		<p>When you create a <strong>New Firebase Project</strong>, by default, the database rules for: <strong>Read
+				and Write</strong> are set to: <strong class="colorRed">false</strong>,
+			which means that you cannot access your database using Firebase APIs, so you need to change them and
+			<strong>secure your database</strong>.
+		</p>
+
+		<ol>
+			<li>Click on <strong>Cloud Firestore</strong> from the menu bar as seen below</li>
+			<img src="assets/images/create_firestore_db.png" alt="Create Database" />
+			<li>Tap the <strong>Create Database</strong> button and a dialog will show up with default rules
+				selected, then tap <strong>Next</strong> button</li>
+			<li>Select Cloud Firestore <strong>location</strong> for your database and click <strong>Enable</strong>
+				button to finish</li>
+			<li>Tap on <strong>Rules</strong> tab as seen below</li>
+			<img src="assets/images/edit_database_rules.png" alt="Edit Database Rules" />
+			<br />
+			<br />
+			<br />
+			<li><strong>Copy</strong> the code snippet below and <strong>Paste</strong> into your database rules
+			</li>
+
+			<pre style="background-color:#ccc; padding: 3px;">
+		rules_version = '2';
+		service cloud.firestore {
+			match /databases/{database}/documents {
+			match /{document=**} {
+				allow read, write;
+			}
+		  }
+		}
+		</pre>
+
+		</ol>
+
+		<hr />
+
+
+		<h3 id="content13"><strong>13) Setup Admob App ID</strong> - <a href="#toc">top</a></h3>
+
+		<p>The <strong>dating_app</strong> project for a while only supports Admob <strong>Interstitial Ad</strong>
+		</p>
+
+
+		<p><strong>STEP 1:</strong> Go to your <a href="https://apps.admob.com" target="_blank">Google Admob
+				Account</a> or get-started <a href="https://admob.google.com/home/get-started" target="_blank">here</a>.
+		</p>
+
+		<ol>
+			<li>Check Admob official documentation <a href="https://support.google.com/admob/answer/7311435"
+					target="_blank"> on how to create Interstitial Ad</a> for your app.</li>
+			<li><a href="https://support.google.com/admob/answer/7356431" target="_blank">Click here</a> to follow
+				Admob official documentation on how to get your <strong>Admob App ID & Interstitial Ad ID</strong>.
+			</li>
+		</ol>
+
+		<p><strong>STEP 2: Add your Admob App ID to the <strong>dating_app</strong> project as seen below:</strong>
+		</p>
+		Open project and go to -> <strong>{app dir}/dating_app/lib/constants/constants.dart</strong> and Add your
+		<strong>Interstitial IDs</strong>, check the image below.</p>
+		<img src="assets/images/add_interstitial_ids_to_the_constants.png" alt="Add your Interstitial IDs" />
+		<br />
+		<br />
+
+		<p><strong class="colorRed">Setup for Android</strong></p>
+
+		<p> Add your Admob App ID in <strong>AndroidManifest.xml</strong> file<br />
+			Open project and go to -> <strong>{app dir}/dating_app/android/app/src/main/AndroidManifest.xml</strong>
+			check the image below.</p>
+		<img src="assets/images/change_admob_app_id_for_android.png" alt="Change Admob App ID for Android" />
+
+		<p><strong class="colorRed">Note:</strong> Failure to do so will result in a crash on launch of your app</p>
+
+		<br />
+		<p><strong class="colorBlue">Setup for iOS - <span class="colorRed">(Optional: if you don't have an Apple
+					computer and Developer Account)</span></strong></p>
+
+		<p> Add your Admob App ID in <strong>Info.plist</strong> file<br />
+			Open project and go to -> <strong>dating_app/ios/Runner/Info.plist</strong> check the image below.</p>
+		<img src="assets/images/change_admob_app_id_for_ios.png" alt="Change Admob App ID for iOS" />
+
+		<p><strong>Note:</strong> Failure to do so will result in a crash on launch of your app</p>
+		<hr />
+
+
+		<h3 id="content14"><strong>14) Run and Debug App</strong> - <a href="#toc">top</a></h3>
+
+		<p>After following all steps now it's time to test your <strong>dating_app</strong> project. </p>
+
+		<p><strong class='colorRed'>Note:</strong> When you are <strong>debugging / releasing</strong> the
+			<b>dating_app</b>, some <span class='colorRed'>red deprecation warning notes</span> will appear on the
+			<strong>console terminal</strong>,
+			this happens because some packages / plug-ins used in the project still support <strong>older
+				versions</strong> of Android and iOS APIs.<br />
+			<strong>So, ignore all of them and there's nothing to do about these warnings, only be aware
+				of.</strong>
+		</p><br>
+
+		<p>Open project -> <strong>dating_app</strong> > Select <strong>Terminal of your IDE</strong> and run the
+			below <strong>command:</strong></p>
+		<p>Run this command:<br />
+			<span class="cmdBackgroundColor">flutter run</span> <br />
+			Make sure your Emulator Device is turned on.
+		</p>
+
+		<h4 class="colorBlue"><strong>Create Database Indexes for your Firebase project</strong></h4>
+		<p><strong class='colorRed'>Note:</strong> When you run the <strong>dating_app</strong> for the
+			<strong>first time</strong>, you will get the <span class="colorBlue">Firestore Indexes
+				Exceptions</span> requiring you to create the query <strong>Indexes</strong> for your database and
+			you will see the <span class="colorRed">Loading</span> in <strong>Tabs</strong> and
+			<strong>Screens</strong> below:<br />
+		<ul>
+			<li><strong>Tabs:</strong> Discover, Matches</li>
+			<li><strong>Screens:</strong> NOTIFICATIONS, LIKES, VISITS & DISLIKED PROFILES</li>
+		</ul>
+		</p>
+		<p><strong>Tap</strong> on the <strong>Tabs & Screens</strong> you will see the firestore exceptions on your
+			console as seen on the example below:</p>
+		<img src="assets/images/database_indexes.png" alt="Firestore Exceptions" />
+		<br />
+		<br />
+		<h4 class="colorBlue"><strong>Dating App <span class="colorRed">required</span> Database Indexes</strong>
+		</h4>
+		<p>Create your <strong>query indexes</strong> following the example below with the same <strong>ASC</strong>
+			and <strong>DESC</strong> fields!</p>
+		<img src="assets/images/firestore_quey_indexes.png" alt="Firestore Quey Indexes" />
+		<br />
+		<br />
+		<hr />
+
+
+		<h3 id="content15"><strong>15) Build and Release App</strong> - <a href="#toc">top</a></h3>
+
+		<p>Before continuing make sure you have <strong class="colorRed">completed all setup instructions</strong>
+			for your <strong>dating_app project.</strong> <br />
+			If <strong>YES</strong>: you are now <strong>ready</strong> to <strong>Build and Release</strong> your
+			<strong>Android or iOS App!</strong>
+		</p>
+
+		<h4><strong>Dating App - <a
+					href='https://codecanyon.net/item/flutter-complete-dating-app-for-android-ios-with-admin-panel/29438891?license=extended'
+					target='_blank'>Extended License</a> <span class="colorRed">required</span> for Comercial
+				Use</strong></h4>
+		If you want to <strong>Build & Publish</strong> the Dating App on your <strong>Google Play or Apple Store
+			Developer Account</strong> for <strong>Business Purposes to Make Money</strong> with <strong>In-App
+			Purchases & Admob Ads</strong> or <strong>Sell</strong> the Dating App as <strong>Paid
+			application</strong> there, please make sure you have purchased the Dating App <strong
+			class="colorRed">Extended License</strong>.
+		<br />
+		<strong class="colorRed">If you haven't,</strong> Please purchase your <a
+			href='https://codecanyon.net/item/flutter-complete-dating-app-for-android-ios-with-admin-panel/29438891?license=extended'
+			target='_blank'><strong>Extended License here</strong></a> and choose the Extended License.
+		</p>
+
+		<p><strong>For more details about the item Licenses;</strong><br />
+			Please check the <strong>Codecanyon</strong> Marketplace full <strong>License Terms</strong> at: <a
+				href='https://codecanyon.net/licenses/standard'
+				target='_blank'>https://codecanyon.net/licenses/standard</a><br />
+			<br />
+			<strong>Do you have a question or need our help?</strong><br />
+			Please contact us: <b class="colorBlue">info.dating.app@gmail.com</b>
+		</p>
+		<hr />
+
+		<h4><strong><span class="colorRed">STEP 1:</span> Build and Release an Android App</strong></h4>
+
+		<p>1.) <a href='https://flutter.dev/docs/deployment/android' target='_blank'>Click here</a> to follow the
+			Flutter official documentation on how to Release an <strong>Android</strong> App.</p>
+
+		<p>2.) <a href='https://developers.google.com/android/guides/client-auth' target='_blank'>Get SHA-1</a> from
+			your <strong>keystore</strong> dating_app you just created above.</p>
+
+		<p>3.) Go to your <a href='https://console.firebase.com' target='_blank'>Firebase Console</a> project and
+			Add <strong>SHA-1</strong> in <strong>Android App</strong>, check the image below:</p>
+		<img src="assets/images/add_sha_1_in_android_app.png" alt="Add SHA-1 in Android App" />
+
+		<p><strong>Note:</strong> Failure to add <strong>SHA-1</strong> to the Firebase <strong>Android
+				App</strong>, the Phone Authentication will not work on Real device.</p>
+
+		<hr />
+
+		<h4><strong><span class="colorRed">STEP 2:</span> Build and Release an iOS App <span class="colorRed">( You
+					need to have an Apple computer and Developer Account)</span> </strong></h4>
+		<p>Please <a href='https://flutter.dev/docs/deployment/ios' target='_blank'>Click here</a> to follow the
+			<strong>Flutter Official Documentation</strong> on how to <strong>Release an iOS</strong> App.
+		</p>
+
+
+		<hr />
+
+
+		<h3 id="content16"><strong>16) Create In-App Purchases - (VIP Subscriptions)</strong> - <a href="#toc">top</a>
+		</h3>
+
+
+		<p><span class="colorRed">Note:</span> Before you get started creating <strong>In-app Purchases - ( VIP
+				Subscriptions for dating_app)</strong>,
+			you need a <strong>Developer Account</strong> for each Store and your Dating App <a
+				href='#content14'>Released</a> and Published to the alpha release mode there!</p>
+
+		<p>The <strong>dating_app</strong> project for a while only uses <strong>subscriptions-type</strong>
+			product.</p>
+
+		<p><strong>TIP:</strong> Keep In-app Purchase <strong>Subscription IDs</strong> the same for <strong>both
+				Stores.</strong></p>
+
+		<h4><strong>Android - Google Play Console</strong></h4>
+
+		<ol>
+			<li>Go to your <a href='https://play.google.com/apps/publish' target='_blank'>Google Play Developer
+					Account</a> or create a new one there.</li>
+			<li><a href='https://support.google.com/googleplay/android-developer/answer/140504' target='_blank'>Click
+					here</a> to follow the Google Play Console official documentation how to
+				create a subscription product for your dating app.</li>
+		</ol>
+
+
+		<h4><strong>iOS - App Store Connect - <span class="colorRed">(You need to have an Apple computer and
+					Developer Account)</span></strong></h4>
+
+		<ol>
+			<li>Go to your <a href='https://appstoreconnect.apple.com/login' target='_blank'>Apple Developer
+					Account</a> or get started enrollment <a href='https://developer.apple.com/support/enrollment'
+					target='_blank'>here</a>.</li>
+			<li>Check the <strong>Apple official documentation</strong> for configuring in-app purchases <a
+					href='https://help.apple.com/app-store-connect/#/devb57be10e7' target='_blank'>here</a></li>
+			<li><a href='https://help.apple.com/app-store-connect/#/dev06f89ce98' target='_blank'>Click here</a> to
+				follow the <strong>Apple official documentation</strong> how to create an <strong>auto-renewable
+					subscription</strong> for your dating app.</li>
+		</ol>
+
+		<hr />
+
+		<h3 id="content17"><strong>17 ) Setup the Passport feature</strong> - <a href="#toc">top</a></h3>
+
+		<p>1.) <strong class="colorBlue">About Passport feature, What is it for?</strong><br />
+			The <strong>Passport</strong> feature <strong>allows</strong> your Users to <strong>Travel
+				using</strong> <strong>Google Maps</strong> to search for location and swipe people in another
+			<strong>Country or City!</strong><br />
+			<strong>Example:</strong> You are living in <strong>United States (US)</strong> and want to see other
+			users located in the <strong>United Kingdom (UK)</strong>.
+			Therefore the <strong>Passport</strong> is the solution to change your current location!
+		</p>
+
+		<h4>2.) <strong class="colorRed">Requirements</strong> for <strong>Passport feature</strong> </h4>
+		To get the Passport feaature working as expected, You need to <strong class="colorRed">UPGRADE</strong> your
+		<strong>FREE Firebase Plain</strong> to <strong class="colorBlue">"Blaze Plan"</strong> - <b>Pay as you
+			Go</b>.</p>
+
+		<p>3.) <strong>Enable the <span class="colorRed">Google Maps Required APIs</span> for Passport
+				feature</strong></p>
+		<p>
+			<strong>- Go to your Google Cloud Platform Console:</strong> <strong><a
+					href='https://console.cloud.google.com/google/maps-apis'>https://console.cloud.google.com/google/maps-apis</a></strong>
+			and sign in if you are not! <br />
+			<span class="colorBlue">- From Side Navigation Menu > APIs > Enable the following APIs below:</span>
+			<strong>
+				<ul>
+					<li>Maps SDK for Android</li>
+					<li>Maps SDK for iOS - Only for iOS Devices</li>
+					<li>Geocoding API</li>
+					<li>Places API</li>
+				</ul>
+			</strong>
+		</p>
+
+		<p>Check the <strong>Enabled APIs</strong> on the screenshot below:<br /> <br />
+			<img src="assets/images/enable_google_maps_apis.png" alt="Enable Google Maps APIs" />
+		</p>
+
+		<p><strong>4.) Get your <span class="colorBlue">Android / iOS</span> <span class="colorRed">API
+					KEY</span></strong> to add it to the <strong>dating_app</strong> source code</p>
+		- From <strong>Side Navigation Menu</strong> > tap on <strong>Credentials</strong> and <strong>Copy</strong>
+		your Android / iOS <strong>API Key</strong> from the list as seen on the screenshot below:
+		<br />
+		<br />
+		<img src="assets/images/copy_android_or_ios_api_key.png" alt="Copy the API Key" />
+		<br />
+		<br />
+		<p><strong>5.) Add the Copied</strong> <span class="colorRed">API KEY</span> to the
+			<strong>dating_app</strong> source code
+		</p>
+
+		<ol>
+			<li>Add your <strong>API KEY</strong> to the <strong class="colorBlue">Constants Variables</strong>
+				:<br />
+				Go to <strong>{app dir}/dating_app/lib/constants/constants.dart</strong> and Add your API Key as
+				seen on the screenshot below:
+				<br />
+				<br />
+				<img src="assets/images/add_api_key_to_the_constants.png" alt="Constants Settings" /></p>
+			<li>Add your <strong>Android API KEY</strong> to the <strong class="colorBlue">Android Platform</strong>
+				code</li>
+			Go to <strong>{app dir}/dating_app/android/app/src/main/AndroidManifest.xml</strong> as seen on the
+			screenshot below:
+			<br />
+			<br />
+			<img src="assets/images/add_your_android_api_here.png" alt="API Key for Android Platform" /></p>
+			<br />
+			<li>Add your <strong>iOS API KEY</strong> to the <strong class="colorRed">iOS Platform</strong> code
+			</li>
+			Go to <strong>{app dir}/dating_app/ios/Runner/AppDelegate.swift</strong> as seen on the screenshot
+			below:
+			<br />
+			<br />
+			<img src="assets/images/add_your_iOS_api_here.png" alt="API Key for iOS Platform" /></p>
+		</ol>
+
+		<p><strong class="colorBlue">That's All for Passport feature - Setup</strong><br />
+			<strong>If you have done all the steps above</strong>, now you are ready to test the Passport feature,
+			but first make sure to <strong class="colorRed">UPGRADE</strong> your Firebase Account to <strong
+				class="colorBlue">Blaze Plan</strong>, <span style="color: red;">otherwise the passport feature will
+				not <strong>Search the Places</strong> on Map</span>.
+		</p>
+
+
+
+		<hr />
+
+
+		<h3 id="content18"><strong>18 ) Upload Cloud Functions for Push Notifications</strong> - <a href="#toc">top</a>
+		</h3>
+
+		<p><strong class="colorRed">Note:</strong> Before proceeding, you must <a
+				href="https://console.firebase.google.com/" target="_blank"><strong>UPGRADE</strong></a> your
+			Firebase Project plan to <strong class="colorBlue">Blaze</strong> <strong>"Pay as you go"</strong> in
+			order to be able to deploy the Cloud
+			Functions.</p>
+
+		<ul>
+			<li>Launch <strong>Visual Studio Code</strong> or your preferred Editor (IDE).</li>
+			<li>Navigate to the <strong class="colorRed">Advanced-Dating-App/<span class="colorBlue">Cloud
+						Functions</span></strong> folder by selecting <strong>"File" &gt; "Open Folder"</strong>
+				from editor
+				menu.</li>
+			<li>In your <strong>Editor Terminal</strong>, execute the following commands below:</li>
+		</ul>
+
+		<br />
+
+		<ol>
+			<li><span class="cmdBackgroundColor">firebase login</span> - Login to your <strong>Firebase</strong>
+				account.</li>
+			<br />
+			<li><span class="cmdBackgroundColor">firebase init functions</span> - Connect your local project to your
+				Firebase
+				project.</li>
+			<br />
+			<li>You will be asked about your Project. Select <strong class="colorRed">Use an existing
+					project</strong> option.
+			</li>
+			<br />
+			<li>What language would you like to use to write Cloud Functions? <br> Select ❯ <strong
+					class="colorRed">JavaScript</strong> language option.</li>
+			<li>? Do you want to use <strong>ESLint</strong> to catch probable bugs and enforce style? (y/N) <br>
+				Answer:
+				<strong class="colorRed">Y</strong>
+			</li>
+			<li>? Do you want to <strong>install dependencies with npm</strong> now? (Y/n) <br> Answer: <strong
+					class="colorRed">Y</strong></li>
+			<li>Once done, now <strong>move the <span class="colorRed">index.js</span></strong> into
+				<strong>functions</strong>
+				folder replacing the existing one.
+			</li>
+			<br />
+			<li><span class="cmdBackgroundColor">firebase deploy --only functions</span> - Deploy the Cloud
+				Functions to your
+				Firebase project.</li>
+			<br />
+			<p>If you get some errors while executing the above command. please follow the instructions below to fix
+				the Fix
+				<strong class="colorRed">eslint</strong> error.
+			<p></p>
+			<li>Open the <span class="colorRed">package.json</span> file inside <strong>functions</strong> folder
+				and <strong class="colorRed">remove the dot and white space in front of <span
+						class="colorRed">eslint</span></strong> at
+				<strong>line 5</strong>. After that execute the above command again.
+			</li>
+		</ol>
+
+		<hr />
+
+
+
+		<p style="color: grey; text-align: center; padding: 50PX;">***** <strong>END DATING_APP SETUP
+				SECTION</strong> ***** </p>
+
+		<hr />
+
+		<p class="bgPink">START ADMIN PANEL SECTION</p>
+
+		<h2 id="setup-admin-panel" class="alt">Admin Panel Table of Contents</h2>
+		<ol>
+			<li><a href="#admin-content00">Admin Panel Overview</a></li>
+			<li><a href="#admin-content01">Open Admin Panel Project</a></li>
+			<li><a href="#admin-content02">Change Admin Panel Name & Theme Colors</a></li>
+			<li><a href="#admin-content03">Change Admin Panel Icons</a></li>
+			<li><a href="#admin-content04">Add your Firebase project configuration</a>
+				<br>
+				<a href="#admin-panel-new-firebase-init"><strong class="colorRed">NEW - Firebase initialization for
+						Admin Panel</strong></a>
+			</li>
+			<li><a href="#admin-content05">Create Admin Sign In Credentials</a></li>
+			<li><a href="#admin-content06">Run and Debug Admin Panel</a></li>
+			<li><a href="#admin-content07">Add your Dating App Information</a></li>
+			<li><a href="#admin-content08">Upload and Host Admin Panel</a></li>
+
+		</ol>
+
+		<hr />
+
+		<h3 id="#admin-content00"><strong>01) Admin Panel Overview</strong></h3>
+
+		<h4><strong>Admin Panel Features</strong></h4>
+		<br />
+		<p style="margin-bottom: 0px;"><strong>Dashboard Screen: </strong>
+		<ul>
+			<li>Show Users Estatistic in Real Time</li>
+			<li>Total Active Users</li>
+			<li>Total Verified Users</li>
+			<li>Total Flagged Users</li>
+			<li>Total Bloked Users</li>
+		</ul>
+		<strong>Users Screen: </strong>
+		<ul>
+			<li>Show List of Users</li>
+			<li>Search User by: ID, Country, City, Name and ID</li>
+			<li>Sort Users by: Name, Gender, Country, City and Status</li>
+		</ul>
+		<strong>User Profile Screen:</strong>
+		<ul>
+			<li>View User Profile Info</li>
+			<li>Block User Account</li>
+			<li>Activate User Account</li>
+			<li>Copy User ID</li>
+			<li>Copy User Phone number</li>
+		</ul>
+		<strong>Flagged Users Screen: </strong>
+		<ul>
+			<li>Show List of Flagged Users</li>
+			<li>Delete flag alert</li>
+		</ul>
+		<strong>App Settings Screen: </strong>
+		<ul>
+			<li>Save/Update your App Settings</li>
+		</ul>
+		<strong>In-App Purchases: </strong>
+		<ul>
+			<li>Add your VIP Subscriptions Plans</li>
+		</ul>
+		<strong>Push Notifications: </strong>
+		<ul>
+			<li>Send Push Notifications to all users</li>
+		</ul>
+		<strong>Sign In Screen: </strong>
+		<ul>
+			<li>Admin Sign In with Username and Password</li>
+		</ul>
+		<strong>Admin Profile Screen: </strong>
+		<ul>
+			<li>Save/Update Admin Username and Password</li>
+		</ul>
+		</p>
+
+		<hr />
+
+		<h3 id="admin-content01"><strong>02) Open Admin Panel Project</strong></h3>
+		<p>How to open the Admin Panel project using the <strong>Visual Studio Code</strong>; - (For other IDEs
+			please follow their official instructions)</p>
+		<ol>
+			<li>Start the <strong>Visual Studio Code.</strong> or your favorite IDE Editor</li>
+			<li>Select File > Open Folder from the main menu and then choose > <strong>Flutter Dating App > SOURCE
+					CODES > <span class="colorRed">dating_app_dashboard</span></strong> folder.</li>
+			<li>Run the this <strong>command:</strong> <span class="cmdBackgroundColor">flutter pub get</span> on
+				your <strong>Terminal</strong> Editor <strong>to get flutter packages.</strong></li>
+		</ol>
+
+		<hr />
+
+		<h4><strong>Admin Panel Project Structure</strong></h4>
+		<p><strong>Check the project structure and open the <span class="colorBlue">pubspec.yaml</span>
+				file</strong></p>
+		<p><strong>Note:</strong> The <strong>version numbers</strong> of the packages below are always
+			<strong>subject to change</strong>, we still use the image for demo purposes!
+		</p>
+		<img src="assets/images/admin_panel_project_structure.png" alt="Admin Panel Project Structure" />
+		<br />
+		<br />
+		<h4><strong>Admin Panel Database Fields</strong></h4>
+		<img src="assets/images/admin_panel_database_fields.png" alt="Admin Panel Database Fields" />
+		<p>located at <strong>{app dir}/dating_app_dashboard/constants/constants.dart</strong></strong></p>
+
+		<hr />
+
+		<h3 id="admin-content02"><strong>02) Change Admin Panel Name & Theme Colors</strong></h3>
+		<p>Go to <strong>{app dir}/dating_app_dashboard/constants/constants.dart</strong> as seen below:</p>
+		<img src="assets/images/admin_panel_change_name_and_color.png" alt="Change Admin Panel Name & Theme Colors" />
+
+		<hr />
+
+		<h3 id="admin-content03"><strong>03) Change Admin Panel Icons</strong></h3>
+		<p>Go to {app dir}/dating_app_dashboard/<strong>web</strong>/icons and replace all icons with your own,
+			make sure to keep the original icon info: <strong>icon-name</strong>, <strong>icon-dimension</strong>
+			and <strong>icon-extension</strong>. Check the image below:</p>
+		<img src="assets/images/change_admin_panel_icons.png" alt="Change Admin Panel Icons" />
+
+		<hr />
+
+		<h3 id="admin-content04"><strong>04) Add your Firebase project configuration</strong></h3>
+		<ol>
+			<li>Go to your <a href='https://console.firebase.com' target='_blank'>Firebase Console</a> project.</li>
+			<br />
+			<li><strong>Register Web App</strong> to Host your Admin Panel
+				<br />
+				<br />
+				<p>Tap the <strong>Add app</strong> button and the dialog will show up to let you select the
+					platform, check the image below:</p>
+				<img src="assets/images/add_web_app.png" alt="Register Web App" />
+				<img src="assets/images/register_web_app.png" alt="Add Admin Panel Name" />
+				<br />
+				<br />
+
+				<!-- Generate the firebase_options.dart for Admin Panel -->
+				️ <h2 id="admin-panel-new-firebase-init" class="colorBlue"><strong> <span class="colorRed">NEW</span> -
+						<span style="color: black;">Firebase initialization</span>
+						for Admin Panel</strong></h2>
+				<p>The Flutter Apps now supports Firebase initialization directly from Dart Code!</p>
+
+				<p>Please follow the steps below to get-started.</p>
+
+				<h3><strong>
+						Generate the <span class="colorRed">firebase_options.dart</span> for your Web Admin
+						Panel.</strong></h3>
+
+				<p>First of all you need to install the <a href="https://firebase.flutter.dev/docs/cli/"
+						target="_blanck">FlutterFire CLI</a> on your machine.<br />
+					Please follow the instructions below:</p>
+
+				<p><strong>Installation</strong><br />
+					<strong class="colorRed">Note:</strong> The FlutterFire CLI depends on the underlying Firebase
+					CLI.
+					If you haven't already done so, make sure you have the <a
+						href="https://firebase.google.com/docs/cli" target="_blanck">Firebase CLI</a> installed on
+					your machine. If not, <span class="colorRed">make sure</span> you have <a
+						href="https://www.nodejs.org/" target="_blanck"><strong>Node.js</strong></a> on your machine
+					and Install the
+					Firebase CLI via <strong>npm</strong> by running the following command :
+				</p>
+
+				<p><span class="cmdBackgroundColor">npm install -g firebase-tools</span></p>
+
+				<p>Next, install the <strong>FlutterFire CLI</strong> by running the following command:</p>
+
+				<p><span class="cmdBackgroundColor">dart pub global activate flutterfire_cli</span>
+					<br> <br>
+					Once installed, the flutterfire command will be globally available and make sure to follow the
+					wizard installation.
+				</p>
+
+				<h3><strong>Generate the <span class="colorRed">firebase_options.dart</span></strong></h3>
+				<p>Run the <strong>`configure`</strong> command and select your <strong>Firebase project</strong>
+					and make sure the <strong>"web"</strong> platform is selected.</p>
+
+				<p>Please run the commands below:</p>
+				<ol>
+					<li>
+						<p><span class="cmdBackgroundColor">firebase login</span> - Make sure to
+							<strong>Login</strong> to your <strong>Firebase</strong> account first.
+						</p>
+					</li>
+					<li>
+						<p><span class="cmdBackgroundColor">flutterfire configure</span> - Generate the
+							<strong>firebase_options.dart</strong> file
+						</p>
+					</li>
+				</ol>
+
+				<p>Once configured, a <span class="colorRed">firebase_options.dart</span> file will be
+					<strong>generated</strong> for you containing all the options required for initialization.
+				</p>
+				<!-- END Generate the firebase_options.dart -->
+			</li>
+
+		</ol>
+
+		<hr />
+
+		<h3 id="admin-content05"><strong>05) Create Admin Sign in Credentials</strong></h3>
+
+		<p>Once your admin panel is <strong>launched</strong>, you will need <strong>Username</strong> and
+			<strong>Password</strong> to login.
+		</p>
+		<p>For the <strong>first time</strong> you will need to create your Login Credentials
+			<strong>Manually</strong> in your Firebase Database. Check the Steps below:
+		</p>
+		<ol>
+			<li>Go to your <a href="https://console.firebase.com" target="_blank">Firebase Console</a> project.</li>
+			<li>Click on <strong>Cloud Firestore</strong> from the menu bar</li>
+			<li>Create <strong>AppInfo</strong> Collection in Cloud Firestore as seen below:</li>
+			<p style="margin-bottom: 10px;">
+			<ul>
+				<li>Collection Name: <strong>AppInfo</strong></li>
+				<li>Document ID: <strong>settings</strong></li>
+				<li>Fields: <br />
+					<strong>admin_username</strong> = [value] type <strong>String</strong> <br />
+					<strong>admin_password</strong> = [value] type <strong>String</strong>
+				</li>
+			</ul>
+			</p>
+			<p><strong>Check the image below:</strong></p>
+			<img src="assets/images/firestore_collection_structure.png" alt="Firestore collection structure" />
+		</ol>
+
+		<hr />
+
+		<hr />
+
+		<h3 id="admin-content06"><strong>06) Run and Debug your Admin Panel</strong></h3>
+
+		<p><strong>Test</strong> your admin panel project locally before hosting it with firebase</p>
+
+		<p>Go to <strong>{app dir}/dating_app_dashboard</strong> > open your editor <strong>terminal</strong> and
+			run the below <strong>commands:</strong></p>
+
+		<p><span class="cmdBackgroundColor">flutter run -d chrome</span> - to Test your Admin Panel.</p>
+
+		<hr />
+
+		<h3 id="admin-content07"><strong>07) Add your Dating App Information</strong></h3>
+		<ol>
+			<li>Launch your Admin Panel from <strong>terminal</strong> > <span class="cmdBackgroundColor">flutter
+					run -d chrome</span> and login with your admin sign-in credentials.</li>
+			<li>Tap on Menu icon > <strong>App Settings</strong></li>
+			<li>Add your <strong>dating_app settings</strong>. Check the image below:
+				<br />
+				<br />
+				<img src="assets/images/app_settings.png" alt="Add App Settings">
+			</li>
+		</ol>
+		<h4 class="colorBlue"><strong>Some settings and usage instruction:</strong></h4>
+
+		<p><strong>1.) About Android/iOS App Version Controls:</strong><br />
+			This feature helps your users to stay up to date to prevent your old application installed on their
+			phones from stopping to work due to some changes when you update your application!<br />
+			<strong>How are they used?</strong><br />
+			This version numbers are used to Compare the Google Play/App Store version numbers with user local app
+			version number and if the google play/app store version is greater than user local version then user
+			will be required to install the updated app.
+		</p>
+
+		<p>Check the <strong>update screenshot</strong> below - located at:
+			<strong>dating_app/lib/screens/update_app_screen.dart</strong>
+		</p>
+		<br />
+		<img src="assets/images/update_app_screen.jpg" alt="Update App Screen" height="600">
+		<br />
+		<br />
+		<h4><strong>2.) Firebase Server Key:</strong>: Used to autenticate your app to <strong>Send Push
+				Notifications</strong> to all users.</h4>
+		<p><strong>How to get your Firebase Server Key</strong>
+		<ol>
+			<li>Go to your <a href="https://console.firebase.com" target="_blank">Firebase Console</a> project.</li>
+			<li>Check the steps below:
+				<br />
+				<br />
+				<img src="assets/images/admin_panel_messaging_server_token.png" alt="Firebase Server Key">
+			</li>
+		</ol>
+		</p>
+
+		<hr />
+
+		<h3 id="admin-content08"><strong>08) Upload and Host Admin Panel</strong></h3>
+
+		<br />
+		<h4><strong>1.)</strong> Install <strong>Firebase CLI</strong> on your Machine.</h4>
+
+		<p>Before following the steps below, make sure you have <a href="https://nodejs.org" target="_blank">Node.js</a>
+			installed on your machine.</p>
+
+		<p>To host your <strong>Admin Panel</strong> with Firebase Hosting, you need the Firebase CLI (a command
+			line tool)<br />
+			Open your <strong>Machine Window Terminal</strong> and run the below command to install the CLI or
+			update to the latest CLI version.</p>
+		<p><span class="cmdBackgroundColor">npm install -g firebase-tools</span></p>
+
+		<hr />
+
+		<h4><strong>2.) Build and Deploy </strong> the Admin Panel</h4>
+
+		<ol>
+			<li><strong>Build and release</strong> the Admin Panel.
+				<p>Using your Editor: Open {app dir}/dating_app_dashboard > <strong>terminal</strong> and run the
+					below command to release your admin panel. <br />
+					<br />
+					<span class="cmdBackgroundColor">flutter build web --release --web-renderer html</span>
+				</p>
+			</li>
+
+			<p><span class="colorRed">Note:</span> Some of our customers have reported the problem of
+				<strong>displaying network images</strong> from the admin panel!<br />
+				Therefore, make sure to use the <strong><span class="colorRed">html</span> web renderer</strong>
+				flag to solve this issue!
+			</p>
+
+			<p>For more information about the flutter web-renders, check the official documentation: <a
+					href="https://flutter.dev/docs/development/tools/web-renderers" target="_blank">web
+					renderers</a></p>
+
+			<hr />
+
+			<p>Check the generated files inside <strong>/build/web</strong> directory as seen below:</p>
+			<img src="assets/images/admin_panel_build_web_files.png" alt="Build web files">
+			<p>After this step you are ready to host it with firebase!</p>
+
+			<li><strong>Deploy and Host</strong> the Admin Panel on your <strong>Firebase</strong> project.
+				<p>Please run the below <strong>commands</strong>:
+				<ol>
+					<li><span class="cmdBackgroundColor">firebase login</span> - Login to your
+						<strong>Firebase</strong> account
+					</li>
+					<br />
+					<li><span class="cmdBackgroundColor">firebase init hosting</span> - Initiate to connect your
+						local project files to your Firebase project</li>
+					<br />
+					<p style="margin-bottom: 5px;">You will be asked some questions about <strong>Hosting
+							Configuration</strong>. Please answer as listed below:</p>
+					<ul>
+						<li>What do you want to use as your public directory? <strong>build/web</strong> </li>
+						<li>Configure as a single-page app (rewrite all urls to /index.html)? - <strong>Y</strong>
+						</li>
+						<li>Set up automatic builds and deploys with GitHub? - <strong>N</strong> </li>
+						<li>File /build/web/index.html already exists. Overwrite? - <strong class="colorRed">N</strong>
+						</li>
+					</ul>
+
+					<br />
+					<li><span class="cmdBackgroundColor">firebase deploy --only hosting</span> - Deploy the
+						<strong>Admin Panel</strong> to your Firebase project
+					</li>
+					<br />
+					<p>Ater running the above command the Result will be your Admin Panel <strong>Hosting URL:
+							https://...</strong> test it.</p>
+				</ol>
+				</p>
+			</li>
+
+		</ol>
+
+
+
+		<hr />
+
+		<h3 style="color: blue;"><strong>***** That's all *****</strong></h3>
+
+		<hr />
+
+
+		<p>Once again, thank you so much for purchasing this "Flutter Complete Dating App for Android & iOS with
+			Admin Panel". As I said at the beginning, I'd be glad to help you if you have any questions relating to
+			this "Flutter Complete Dating App for Android & iOS with Admin Panel". No guarantees, but I'll do my
+			best to assist. If you have a more general question relating to the apps on Codecanyon, you might
+			consider visiting the forums and asking your question in the "Item Discussion" section.</p>
+
+		<p>Please don't forget to give us review!</p>
+
+		<p class="append-bottom alt large">Kind regards: <strong>Americo Bila</strong></p>
+		<p><a href="#toc">Go To TOP</a></p>
+
+		<hr class="space">
+
+	</div><!-- end div .container -->
+</body>
+
+</html>
