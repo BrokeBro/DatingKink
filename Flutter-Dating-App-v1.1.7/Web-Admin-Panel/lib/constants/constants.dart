@@ -62,6 +62,11 @@ const String USER_DEVICE_TOKEN = "user_device_token";
 const String USER_TOTAL_LIKES = "user_total_likes";
 const String USER_TOTAL_VISITS = "user_total_visits";
 const String USER_TOTAL_DISLIKED = "user_total_disliked";
+// Kink and verification fields
+const String USER_KINKS = "user_kinks";
+const String USER_VERIFICATION_PHOTO = "user_verification_photo";
+const String USER_VERIFICATION_STATUS = "user_verification_status";
+const String USER_AGE_VERIFIED = "user_age_verified";
 // User Setting map - fields
 const String USER_MIN_AGE = "user_min_age";
 const String USER_MAX_AGE = "user_max_age";

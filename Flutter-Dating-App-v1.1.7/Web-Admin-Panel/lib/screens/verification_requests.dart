@@ -123,11 +123,7 @@ class _VerificationRequestsState extends State<VerificationRequests> {
               final user = requests[index].data();
               final userId = user[USER_ID];
               final userName = user[USER_FULLNAME];
-              final userAge = AppModel().calculateUserAge(DateTime(
-                user[USER_BIRTH_YEAR],
-                user[USER_BIRTH_MONTH],
-                user[USER_BIRTH_DAY],
-              ));
+              final userAge = AppModel().calculateUserAge(user[USER_BIRTH_YEAR]);
               final verificationPhoto = user[USER_VERIFICATION_PHOTO];
               final profilePhoto = user[USER_PROFILE_PHOTO];
 
