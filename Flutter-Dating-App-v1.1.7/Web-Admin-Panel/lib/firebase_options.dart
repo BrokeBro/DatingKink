@@ -47,13 +47,13 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA-QSIoyFLrbaYQiKNk3GzfrG9G8b8hjbM',
-    appId: '1:461843801975:web:YOUR_WEB_APP_ID_HERE',
+    apiKey: 'AIzaSyBNBoGRKO2JqFFVdZpNqqRPIEWvCB6fZHo',
+    appId: '1:461843801975:web:169e858fe6756ec61d2372',
     messagingSenderId: '461843801975',
     projectId: 'kinkprod-5f88d',
     authDomain: 'kinkprod-5f88d.firebaseapp.com',
     storageBucket: 'kinkprod-5f88d.firebasestorage.app',
-    measurementId: 'G-XXXXXXXXXX',
+    measurementId: 'G-5SE884EEW1',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
